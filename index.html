@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noora Sakiyya — Social Media & Digital Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#0a0a0a;--surface:#141414;--card:#1a1a1a;--border:#2a2a2a;
+--accent:#e8c97e;--accent2:#c4a882;--text:#f0ece4;--muted:#888;--soft:#555;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',serif}
+
+nav{position:fixed;top:0;width:100%;z-index:100;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;letter-spacing:.02em;color:var(--accent)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--accent)}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:120px 48px 80px;gap:80px}
+.hero-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-tag::before{content:'';width:32px;height:1px;background:var(--accent)}
+.hero-name{font-size:clamp(48px,6vw,80px);line-height:1.05;margin-bottom:8px;font-weight:700}
+.hero-name em{color:var(--accent);font-style:italic}
+.hero-role{font-size:16px;color:var(--muted);margin-bottom:40px;font-weight:300}
+.hero-desc{font-size:15px;color:#bbb;line-height:1.8;max-width:420px;margin-bottom:48px}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#0a0a0a;padding:14px 32px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.btn-primary:hover{background:var(--accent2)}
+.btn-outline{background:transparent;color:var(--text);padding:14px 32px;border:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat-card{background:var(--card);border:1px solid var(--border);padding:28px 24px;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent)}
+.stat-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--accent);line-height:1}
+.stat-label{font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:.06em;text-transform:uppercase}
+
+.platforms{background:var(--card);border:1px solid var(--border);padding:24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.platform-badge{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 14px;border:1px solid var(--border)}
+
+.section-pad{padding:100px 48px}
+.section-header{display:flex;align-items:baseline;gap:24px;margin-bottom:64px}
+.section-num{font-family:'Playfair Display',serif;font-size:80px;font-weight:700;color:var(--border);line-height:1}
+.section-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700}
+.section-sub{font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.result-item{background:var(--bg);padding:48px 36px}
+.result-num{font-family:'Playfair Display',serif;font-size:56px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:12px}
+.result-desc{font-size:14px;color:var(--muted);line-height:1.6}
+.result-brand{font-size:11px;color:var(--soft);letter-spacing:.1em;text-transform:uppercase;margin-top:16px}
+
+.cases{display:flex;flex-direction:column;gap:2px;background:var(--border)}
+.case-item{background:var(--bg);padding:48px;display:grid;grid-template-columns:1fr 2fr;gap:64px;transition:background .3s}
+.case-item:hover{background:var(--card)}
+.case-brand{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:8px}
+.case-period{font-size:12px;color:var(--soft);letter-spacing:.1em;text-transform:uppercase}
+.case-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.case-tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--border);color:var(--muted)}
+.case-challenge{font-size:13px;color:var(--soft);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.case-desc{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:24px}
+.case-results{display:flex;gap:32px;flex-wrap:wrap}
+.case-result-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent)}
+.case-result-label{font-size:12px;color:var(--muted)}
+
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:2px;background:var(--border)}
+.tool-item{background:var(--bg);padding:24px 20px;display:flex;flex-direction:column;gap:10px;transition:background .3s}
+.tool-item:hover{background:var(--card)}
+.tool-dot{width:8px;height:8px;background:var(--accent);border-radius:50%}
+.tool-name{font-size:13px;color:var(--text)}
+.tool-cat{font-size:11px;color:var(--soft);letter-spacing:.06em}
+
+.skills-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;margin-top:64px}
+.skill-group-title{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.skill-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.skill-list li{font-size:14px;color:#bbb;display:flex;align-items:center;gap:10px}
+.skill-list li::before{content:'';width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.edu-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.edu-card{background:var(--bg);padding:40px 36px}
+.edu-degree{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:8px;line-height:1.3}
+.edu-school{font-size:14px;color:var(--muted)}
+.edu-year{font-size:12px;color:var(--soft);margin-top:12px;letter-spacing:.08em}
+
+.certs{display:flex;flex-wrap:wrap;gap:12px;margin-top:48px}
+.cert-badge{padding:10px 20px;border:1px solid var(--border);font-size:12px;color:var(--muted);letter-spacing:.05em}
+
+.lang-row{display:flex;gap:2px;background:var(--border);flex-wrap:wrap;margin-top:20px}
+.lang-item{background:var(--bg);padding:32px 36px;flex:1;min-width:140px}
+.lang-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:6px}
+.lang-level{font-size:12px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+
+.contact-section{padding:100px 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.contact-heading{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;line-height:1.1;margin-bottom:24px}
+.contact-heading em{color:var(--accent);font-style:italic}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-row{padding:20px 24px;border:1px solid var(--border);transition:border-color .3s}
+.contact-row:hover{border-color:var(--accent)}
+.contact-label{font-size:11px;color:var(--soft);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.contact-val{font-size:15px;color:var(--text)}
+
+footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.footer-text{font-size:13px;color:var(--soft)}
+
+@media(max-width:768px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px}
+  .section-pad{padding:60px 24px}
+  .results-grid{grid-template-columns:1fr}
+  .case-item{grid-template-columns:1fr;gap:24px;padding:32px 24px}
+  .skills-cols{grid-template-columns:1fr}
+  .edu-row{grid-template-columns:1fr}
+  .contact-section{grid-template-columns:1fr;padding:60px 24px}
+  footer{flex-direction:column;gap:12px;padding:24px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">NS</div>
+  <div class="nav-links">
+    <a href="#results">Results</a>
+    <a href="#work">Work</a>
+    <a href="#tools">Tools</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-tag">Social Media & Digital Marketing</div>
+    <h1 class="hero-name">Noora<br><em>Sakiyya</em></h1>
+    <p class="hero-role">Digital Marketing Specialist · Abu Dhabi, UAE</p>
+    <p class="hero-desc">Crafting scroll-stopping content and data-driven campaigns across Instagram, TikTok, LinkedIn & Facebook — turning audiences into communities and impressions into results.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+      <button class="btn-outline" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">View Work</button>
+    </div>
+  </div>
+  <div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">70K+</div>
+        <div class="stat-label">Followers Managed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">30%</div>
+        <div class="stat-label">Engagement Growth</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Videos Produced</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Brands Managed</div>
+      </div>
+    </div>
+    <div class="platforms">
+      <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)">Active on</span>
+      <div class="platform-badge">Instagram</div>
+      <div class="platform-badge">TikTok</div>
+      <div class="platform-badge">LinkedIn</div>
+      <div class="platform-badge">Facebook</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section-pad" id="results">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div>
+      <h2 class="section-title">Results That Speak</h2>
+      <p class="section-sub">Key metrics & impact</p>
+    </div>
+  </div>
+  <div class="results-grid">
+    <div class="result-item">
+      <div class="result-num">+30%</div>
+      <div class="result-desc">Engagement rate increase across Instagram, Facebook & TikTok through strategic content planning and audience targeting</div>
+      <div class="result-brand">Mascorp Holdings</div>
+    </div>
+    <div class="result-item">
+      <div class="result-num">70K+</div>
+      <div class="result-desc">Combined social media followers managed with consistent growth through storytelling-led content and campaign strategy</div>
+      <div class="result-brand">Al Qasimia University</div>
+    </div>
+    <div class="result-item">
+      <div class="result-num">+20%</div>
+      <div class="result-desc">Audience interaction uplift during seasonal marketing campaigns through optimized content scheduling and community engagement</div>
+      <div class="result-brand">Sharjah Cooperative</div>
+    </div>
+    <div class="result-item">
+      <div class="result-num">20+</div>
+      <div class="result-desc">University events promoted via targeted social campaigns, driving attendance and online buzz for each activation</div>
+      <div class="result-brand">Al Qasimia University</div>
+    </div>
+    <div class="result-item">
+      <div class="result-num">30</div>
+      <div class="result-desc">Content pieces produced monthly including reels, stories, videos and static posts across multiple brand accounts</div>
+      <div class="result-brand">Mascorp Holdings</div>
+    </div>
+    <div class="result-item">
+      <div class="result-num">50+</div>
+      <div class="result-desc">Social media videos and visual content pieces created — from concept to final edit — for campaigns, events and promotions</div>
+      <div class="result-brand">Al Qasimia University</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="section-pad" id="work" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div>
+      <h2 class="section-title">Case Studies</h2>
+      <p class="section-sub">Campaigns & brand work</p>
+    </div>
+  </div>
+  <div class="cases">
+    <div class="case-item">
+      <div>
+        <div class="case-brand">Mascorp Holdings</div>
+        <div class="case-period">Jan 2026 – Present</div>
+        <div class="case-tags">
+          <span class="case-tag">Multi-brand</span>
+          <span class="case-tag">Paid Social</span>
+          <span class="case-tag">Analytics</span>
+          <span class="case-tag">Content Strategy</span>
+        </div>
+      </div>
+      <div>
+        <div class="case-challenge">The Challenge</div>
+        <p class="case-desc">Developing and implementing cohesive social media strategies for 5+ lifestyle and business brands simultaneously — each requiring a distinct voice, content calendar, and growth approach across Instagram, Facebook and TikTok.</p>
+        <div class="case-results">
+          <div><div class="case-result-num">+30%</div><div class="case-result-label">Engagement rate</div></div>
+          <div><div class="case-result-num">25–30</div><div class="case-result-label">Pieces/month</div></div>
+          <div><div class="case-result-num">5+</div><div class="case-result-label">Brands managed</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-item">
+      <div>
+        <div class="case-brand">Al Qasimia University</div>
+        <div class="case-period">2023 – 2025</div>
+        <div class="case-tags">
+          <span class="case-tag">Video Production</span>
+          <span class="case-tag">Event Marketing</span>
+          <span class="case-tag">Community Growth</span>
+        </div>
+      </div>
+      <div>
+        <div class="case-challenge">The Challenge</div>
+        <p class="case-desc">Managing the social media presence of a major UAE university with a 70K+ audience — producing high-volume video content, promoting 20+ events annually, and building a storytelling-led brand that resonated with students, staff and the wider community.</p>
+        <div class="case-results">
+          <div><div class="case-result-num">70K+</div><div class="case-result-label">Followers managed</div></div>
+          <div><div class="case-result-num">50+</div><div class="case-result-label">Videos produced</div></div>
+          <div><div class="case-result-num">20+</div><div class="case-result-label">Events promoted</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-item">
+      <div>
+        <div class="case-brand">Sharjah Cooperative Society</div>
+        <div class="case-period">2024 – 2025</div>
+        <div class="case-tags">
+          <span class="case-tag">Seasonal Campaigns</span>
+          <span class="case-tag">Content Scheduling</span>
+          <span class="case-tag">Reporting</span>
+        </div>
+      </div>
+      <div>
+        <div class="case-challenge">The Challenge</div>
+        <p class="case-desc">Supporting the execution of digital marketing campaigns across multiple platforms during peak seasonal periods — managing content publishing, community engagement, and performance tracking to drive measurable audience interaction.</p>
+        <div class="case-results">
+          <div><div class="case-result-num">+20%</div><div class="case-result-label">Audience interaction</div></div>
+          <div><div class="case-result-num">Multi</div><div class="case-result-label">Platform campaigns</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="section-pad" id="tools" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div>
+      <h2 class="section-title">Tools & Skills</h2>
+      <p class="section-sub">Full stack of capabilities</p>
+    </div>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Meta Business Suite</div><div class="tool-cat">Social</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Google Analytics</div><div class="tool-cat">Analytics</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Meta Insights</div><div class="tool-cat">Analytics</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Google Ads</div><div class="tool-cat">Paid Media</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">HubSpot</div><div class="tool-cat">Marketing</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Mailchimp</div><div class="tool-cat">Email</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Buffer</div><div class="tool-cat">Scheduling</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Adobe Photoshop</div><div class="tool-cat">Design</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Adobe Illustrator</div><div class="tool-cat">Design</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Adobe Premiere Pro</div><div class="tool-cat">Video</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Canva</div><div class="tool-cat">Design</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">Figma</div><div class="tool-cat">Design</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">CapCut</div><div class="tool-cat">Video</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">VN Editor</div><div class="tool-cat">Video</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">InShot</div><div class="tool-cat">Video</div></div>
+    <div class="tool-item"><div class="tool-dot"></div><div class="tool-name">WordPress</div><div class="tool-cat">Web</div></div>
+  </div>
+  <div class="skills-cols">
+    <div>
+      <div class="skill-group-title">Strategy & Management</div>
+      <ul class="skill-list">
+        <li>Social Media Strategy</li>
+        <li>Content Calendar Management</li>
+        <li>Campaign Management</li>
+        <li>Paid Social Media Campaigns</li>
+        <li>Brand Communication</li>
+        <li>Trend Analysis</li>
+      </ul>
+    </div>
+    <div>
+      <div class="skill-group-title">Content & Creation</div>
+      <ul class="skill-list">
+        <li>Short-Form Video (Reels/TikTok)</li>
+        <li>Graphic Design</li>
+        <li>Video Editing</li>
+        <li>Copywriting</li>
+        <li>Storytelling Content</li>
+        <li>Content Scheduling</li>
+      </ul>
+    </div>
+    <div>
+      <div class="skill-group-title">Analytics & Growth</div>
+      <ul class="skill-list">
+        <li>Social Media Analytics</li>
+        <li>Performance Reporting</li>
+        <li>Audience Growth</li>
+        <li>Community Engagement</li>
+        <li>Platform Algorithm Awareness</li>
+        <li>Brand Awareness Campaigns</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / EDUCATION -->
+<section class="section-pad" id="about" style="padding-top:0">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div>
+      <h2 class="section-title">Education & Credentials</h2>
+      <p class="section-sub">Academic background</p>
+    </div>
+  </div>
+  <div class="edu-row">
+    <div class="edu-card">
+      <div class="edu-degree">BA Mass Communication & Media</div>
+      <div class="edu-school">Al Qasimia University, UAE</div>
+      <div class="edu-year">2022 – 2025</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">Diploma in Public Relations</div>
+      <div class="edu-school">Al Qasimia University, UAE</div>
+      <div class="edu-year">2024 – 2025</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">Diploma in Media Translation</div>
+      <div class="edu-school">Al Uyoon Academy</div>
+      <div class="edu-year">2023</div>
+    </div>
+  </div>
+  <div class="certs">
+    <div class="cert-badge">Google Fundamentals of Digital Marketing</div>
+    <div class="cert-badge">HubSpot Digital Marketing Certification</div>
+    <div class="cert-badge">SEMrush Marketing Certificate</div>
+    <div class="cert-badge">AI for Everyone — Coursera</div>
+    <div class="cert-badge">Fundamentals of Content Creation — WAM</div>
+  </div>
+  <div style="margin-top:64px">
+    <div class="skill-group-title">Languages</div>
+    <div class="lang-row">
+      <div class="lang-item"><div class="lang-name">Arabic</div><div class="lang-level">Fluent</div></div>
+      <div class="lang-item"><div class="lang-name">English</div><div class="lang-level">Fluent</div></div>
+      <div class="lang-item"><div class="lang-name">Malayalam</div><div class="lang-level">Native</div></div>
+      <div class="lang-item"><div class="lang-name">Hindi</div><div class="lang-level">Proficient</div></div>
+      <div class="lang-item"><div class="lang-name">Urdu</div><div class="lang-level">Proficient</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div>
+    <h2 class="contact-heading">Let's create something <em>great</em> together.</h2>
+    <p style="font-size:15px;color:var(--muted);line-height:1.8">Open to full-time roles, freelance projects and brand collaborations in social media management, digital marketing and content creation across the UAE.</p>
+    <p style="margin-top:16px;font-size:12px;color:var(--soft);letter-spacing:.08em">UAE Golden Visa Holder · Available Immediately</p>
+  </div>
+  <div class="contact-info">
+    <div class="contact-row">
+      <div class="contact-label">Email</div>
+      <div class="contact-val">noorasakiyap313@gmail.com</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-label">Phone / WhatsApp</div>
+      <div class="contact-val">+971 507 265 819</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-label">LinkedIn</div>
+      <div class="contact-val">noora-sakiya-a91339313</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-label">Location</div>
+      <div class="contact-val">Abu Dhabi, UAE</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-text">© 2026 Noora Sakiyya — Social Media & Digital Marketing Specialist</div>
+  <div class="footer-text">Abu Dhabi, UAE · UAE Golden Visa</div>
+</footer>
+
+</body>
+</html>
