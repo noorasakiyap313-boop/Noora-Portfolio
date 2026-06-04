@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noora Sakiyya — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf9f7;
+  --white:#ffffff;
+  --navy:#1a2744;
+  --brown:#3d2b1f;
+  --accent:#c8a97e;
+  --accent-light:#f0e6d8;
+  --muted:#8a7a6e;
+  --border:#e8e0d8;
+  --text:#2c1f14;
+}
+body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(250,249,247,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--navy);letter-spacing:.05em}
+.nav-links{display:flex;gap:36px}
+.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--navy)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding:120px 60px 80px;gap:80px;align-items:center;background:var(--white);border-bottom:1px solid var(--border)}
+.hero-eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--accent)}
+.hero-name{font-size:clamp(52px,7vw,88px);line-height:1;font-weight:700;color:var(--navy);margin-bottom:6px}
+.hero-name em{color:var(--accent);font-style:italic}
+.hero-title{font-size:15px;color:var(--muted);margin-bottom:36px;font-weight:300;letter-spacing:.05em}
+.hero-desc{font-size:15px;color:var(--brown);line-height:1.9;max-width:400px;margin-bottom:44px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--navy);color:#fff;padding:13px 32px;border:none;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.btn-primary:hover{background:var(--brown)}
+.btn-outline{background:transparent;color:var(--navy);padding:13px 32px;border:1.5px solid var(--navy);font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.btn-outline:hover{background:var(--navy);color:#fff}
+
+.hero-right{display:flex;flex-direction:column;gap:20px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat-card{background:var(--bg);border:1px solid var(--border);padding:28px 24px;position:relative}
+.stat-card::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:2px;background:var(--accent)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:700;color:var(--navy);line-height:1}
+.stat-label{font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:.08em;text-transform:uppercase}
+
+.platform-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:var(--bg);border:1px solid var(--border);padding:20px 24px}
+.platform-icon{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;transition:transform .2s}
+.platform-icon:hover{transform:scale(1.1)}
+.p-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+.p-tt{background:#000}
+.p-li{background:#0077b5}
+.p-fb{background:#1877f2}
+.p-sc{background:#fffc00;color:#000 !important}
+.p-yt{background:#ff0000}
+.platform-label{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-left:4px}
+
+/* DECORATIVE PHOTO STRIP */
+.photo-strip{display:grid;grid-template-columns:repeat(5,1fr);height:220px;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.photo-strip-item{overflow:hidden;position:relative}
+.photo-strip-item img{width:100%;height:100%;object-fit:cover;filter:sepia(20%) brightness(1.05);transition:filter .4s}
+.photo-strip-item:hover img{filter:sepia(0%) brightness(1.1)}
+.photo-placeholder{width:100%;height:100%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:28px}
+
+/* SECTIONS */
+.section-pad{padding:90px 60px}
+.section-header{margin-bottom:56px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:24px}
+.section-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:700;color:var(--navy);line-height:1.1}
+.section-num{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:700;color:var(--border);line-height:1}
+
+/* RESULTS */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.result-card{background:var(--white);border:1px solid var(--border);padding:40px 32px;position:relative;overflow:hidden;transition:box-shadow .3s}
+.result-card:hover{box-shadow:0 8px 32px rgba(26,39,68,.08)}
+.result-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--navy))}
+.result-icon{font-size:24px;color:var(--accent);margin-bottom:16px}
+.result-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--navy);line-height:1;margin-bottom:10px}
+.result-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.result-brand{font-size:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-top:16px;font-weight:500}
+
+/* CASE STUDIES */
+.cases{display:flex;flex-direction:column;gap:20px}
+.case-card{background:var(--white);border:1px solid var(--border);display:grid;grid-template-columns:280px 1fr;overflow:hidden;transition:box-shadow .3s}
+.case-card:hover{box-shadow:0 8px 32px rgba(26,39,68,.08)}
+.case-sidebar{background:var(--accent-light);padding:40px 32px;display:flex;flex-direction:column;gap:16px}
+.case-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:700;color:var(--accent);line-height:1;opacity:.5}
+.case-brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--navy);line-height:1.2}
+.case-period{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.case-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.case-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--accent);color:var(--brown);background:rgba(200,169,126,.1)}
+.case-body{padding:40px 40px}
+.case-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.case-desc{font-size:14px;color:var(--brown);line-height:1.85;margin-bottom:28px}
+.case-metrics{display:flex;gap:32px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--border)}
+.metric-num{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--navy)}
+.metric-label{font-size:11px;color:var(--muted)}
+
+/* TOOLS */
+.tools-section{background:var(--white)}
+.tools-categories{display:flex;flex-direction:column;gap:40px}
+.tool-cat-title{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.tool-cat-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.tools-row{display:flex;flex-wrap:wrap;gap:12px}
+.tool-pill{display:flex;align-items:center;gap:10px;padding:10px 18px;border:1px solid var(--border);background:var(--bg);transition:all .3s;cursor:default}
+.tool-pill:hover{border-color:var(--accent);background:var(--accent-light)}
+.tool-pill i{font-size:16px;color:var(--navy)}
+.tool-pill span{font-size:12px;color:var(--brown);letter-spacing:.04em}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.skill-group{background:var(--white);border:1px solid var(--border);padding:32px 28px}
+.skill-group-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.skill-group-sub{font-size:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.skill-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.skill-list li{font-size:13px;color:var(--brown);display:flex;align-items:center;gap:10px}
+.skill-list li::before{content:'';width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+/* EDU */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.edu-card{background:var(--white);border:1px solid var(--border);padding:36px 28px;position:relative}
+.edu-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--accent)}
+.edu-icon{font-size:20px;color:var(--accent);margin-bottom:16px}
+.edu-degree{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.3}
+.edu-school{font-size:13px;color:var(--muted)}
+.edu-year{font-size:11px;color:var(--accent);margin-top:12px;letter-spacing:.08em;font-weight:500}
+
+.certs-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.cert-item{display:flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid var(--border);background:var(--white)}
+.cert-item i{color:var(--accent);font-size:14px}
+.cert-item span{font-size:12px;color:var(--brown)}
+
+.lang-grid{display:flex;gap:16px;flex-wrap:wrap;margin-top:36px}
+.lang-card{background:var(--white);border:1px solid var(--border);padding:24px 28px;flex:1;min-width:120px;text-align:center}
+.lang-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.lang-flag{font-size:20px;margin-bottom:8px}
+.lang-level{font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+
+/* CONTACT */
+.contact-section{background:var(--navy);padding:90px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.contact-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.contact-heading{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:20px}
+.contact-heading em{color:var(--accent);font-style:italic}
+.contact-sub{font-size:14px;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:16px}
+.contact-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid rgba(200,169,126,.3);color:var(--accent);font-size:11px;letter-spacing:.08em}
+.contact-info{display:flex;flex-direction:column;gap:14px}
+.contact-row{display:flex;align-items:center;gap:16px;padding:18px 22px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);transition:all .3s}
+.contact-row:hover{border-color:var(--accent);background:rgba(200,169,126,.08)}
+.contact-row i{color:var(--accent);font-size:16px;width:20px}
+.contact-col{}
+.contact-label{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.contact-val{font-size:14px;color:#fff}
+
+footer{background:var(--navy);padding:24px 60px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center}
+.footer-text{font-size:12px;color:rgba(255,255,255,.35)}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--accent)}
+
+/* DIVIDER PHOTO */
+.mid-photo{width:100%;height:180px;background:var(--accent-light);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;overflow:hidden}
+.mid-photo-cell{display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--accent);border-right:1px solid var(--border)}
+.mid-photo-cell:last-child{border-right:none}
+
+@media(max-width:900px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px}
+  .section-pad{padding:60px 24px}
+  .results-grid{grid-template-columns:1fr 1fr}
+  .case-card{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr}
+  .contact-section{grid-template-columns:1fr;padding:60px 24px}
+  footer{padding:20px 24px;flex-direction:column;gap:8px}
+  .photo-strip{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Noora Sakiyya</div>
+  <div class="nav-links">
+    <a href="#results">Results</a>
+    <a href="#work">Work</a>
+    <a href="#tools">Tools</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">Social Media & Digital Marketing</div>
+    <h1 class="hero-name">Noora<br><em>Sakiyya</em></h1>
+    <p class="hero-title">Digital Marketing Specialist &nbsp;·&nbsp; Abu Dhabi, UAE</p>
+    <p class="hero-desc">Crafting scroll-stopping content and data-driven campaigns across Instagram, TikTok, LinkedIn & Facebook — turning audiences into communities and impressions into real results.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+      <button class="btn-outline" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">View Work</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">70K+</div>
+        <div class="stat-label">Followers Managed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">30%</div>
+        <div class="stat-label">Engagement Growth</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Videos Produced</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Brands Managed</div>
+      </div>
+    </div>
+    <div class="platform-row">
+      <span class="platform-label">Active on</span>
+      <div class="platform-icon p-ig" title="Instagram"><i class="fa-brands fa-instagram"></i></div>
+      <div class="platform-icon p-tt" title="TikTok"><i class="fa-brands fa-tiktok"></i></div>
+      <div class="platform-icon p-li" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></div>
+      <div class="platform-icon p-fb" title="Facebook"><i class="fa-brands fa-facebook-f"></i></div>
+      <div class="platform-icon p-sc" title="Snapchat" style="color:#000"><i class="fa-brands fa-snapchat"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-placeholder"><i class="fa-solid fa-camera"></i></div>
+  <div class="photo-placeholder"><i class="fa-solid fa-mobile-screen"></i></div>
+  <div class="photo-placeholder"><i class="fa-solid fa-chart-line"></i></div>
+  <div class="photo-placeholder"><i class="fa-solid fa-pen-nib"></i></div>
+  <div class="photo-placeholder"><i class="fa-solid fa-video"></i></div>
+</div>
+<!-- REPLACE ABOVE PLACEHOLDERS: swap each .photo-placeholder div with an <img src="YOUR_PHOTO.jpg"> tag -->
+
+<!-- RESULTS -->
+<section class="section-pad" id="results">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Key Metrics</div>
+      <h2 class="section-title">Results That Speak</h2>
+    </div>
+    <div class="section-num">01</div>
+  </div>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+      <div class="result-num">+30%</div>
+      <div class="result-desc">Engagement rate increase across Instagram, Facebook & TikTok through strategic content planning and audience targeting</div>
+      <div class="result-brand"><i class="fa-solid fa-building"></i> &nbsp;Mascorp Holdings</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon"><i class="fa-solid fa-users"></i></div>
+      <div class="result-num">70K+</div>
+      <div class="result-desc">Combined social media followers managed with consistent growth through storytelling-led content strategy</div>
+      <div class="result-brand"><i class="fa-solid fa-graduation-cap"></i> &nbsp;Al Qasimia University</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon"><i class="fa-solid fa-heart"></i></div>
+      <div class="result-num">+20%</div>
+      <div class="result-desc">Audience interaction uplift during seasonal marketing campaigns through optimized content scheduling</div>
+      <div class="result-brand"><i class="fa-solid fa-store"></i> &nbsp;Sharjah Cooperative</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon"><i class="fa-solid fa-calendar-check"></i></div>
+      <div class="result-num">20+</div>
+      <div class="result-desc">University events promoted via targeted social campaigns, driving attendance and online buzz</div>
+      <div class="result-brand"><i class="fa-solid fa-graduation-cap"></i> &nbsp;Al Qasimia University</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon"><i class="fa-solid fa-layer-group"></i></div>
+      <div class="result-num">30</div>
+      <div class="result-desc">Content pieces produced monthly — reels, stories, videos and static posts across multiple brand accounts</div>
+      <div class="result-brand"><i class="fa-solid fa-building"></i> &nbsp;Mascorp Holdings</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon"><i class="fa-solid fa-film"></i></div>
+      <div class="result-num">50+</div>
+      <div class="result-desc">Social media videos and visual content pieces created from concept to final edit for campaigns and events</div>
+      <div class="result-brand"><i class="fa-solid fa-graduation-cap"></i> &nbsp;Al Qasimia University</div>
+    </div>
+  </div>
+</section>
+
+<!-- MID DIVIDER -->
+<div class="mid-photo">
+  <div class="mid-photo-cell"><i class="fa-brands fa-instagram"></i></div>
+  <div class="mid-photo-cell"><i class="fa-brands fa-tiktok"></i></div>
+  <div class="mid-photo-cell"><i class="fa-solid fa-chart-pie"></i></div>
+  <div class="mid-photo-cell"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+</div>
+
+<!-- CASE STUDIES -->
+<section class="section-pad" id="work">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Campaign Work</div>
+      <h2 class="section-title">Case Studies</h2>
+    </div>
+    <div class="section-num">02</div>
+  </div>
+  <div class="cases">
+    <div class="case-card">
+      <div class="case-sidebar">
+        <div class="case-num">01</div>
+        <div class="case-brand">Mascorp Holdings</div>
+        <div class="case-period">Jan 2026 – Present</div>
+        <div class="case-tags">
+          <span class="case-tag">Multi-brand</span>
+          <span class="case-tag">Paid Social</span>
+          <span class="case-tag">Analytics</span>
+          <span class="case-tag">Strategy</span>
+        </div>
+        <div style="margin-top:auto;display:flex;gap:10px;padding-top:20px">
+          <i class="fa-brands fa-instagram" style="color:var(--brown);font-size:18px"></i>
+          <i class="fa-brands fa-tiktok" style="color:var(--brown);font-size:18px"></i>
+          <i class="fa-brands fa-facebook" style="color:var(--brown);font-size:18px"></i>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-label">The Challenge</div>
+        <p class="case-desc">Developing and implementing cohesive social media strategies for 5+ lifestyle and business brands simultaneously — each requiring a distinct voice, content calendar, and growth approach across Instagram, Facebook and TikTok. Managed paid campaigns and analyzed performance through Meta Insights and Google Analytics.</p>
+        <div class="case-metrics">
+          <div><div class="metric-num">+30%</div><div class="metric-label">Engagement rate</div></div>
+          <div><div class="metric-num">25–30</div><div class="metric-label">Pieces/month</div></div>
+          <div><div class="metric-num">5+</div><div class="metric-label">Brands managed</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-sidebar">
+        <div class="case-num">02</div>
+        <div class="case-brand">Al Qasimia University</div>
+        <div class="case-period">2023 – 2025</div>
+        <div class="case-tags">
+          <span class="case-tag">Video</span>
+          <span class="case-tag">Events</span>
+          <span class="case-tag">Community</span>
+          <span class="case-tag">Growth</span>
+        </div>
+        <div style="margin-top:auto;display:flex;gap:10px;padding-top:20px">
+          <i class="fa-brands fa-instagram" style="color:var(--brown);font-size:18px"></i>
+          <i class="fa-brands fa-tiktok" style="color:var(--brown);font-size:18px"></i>
+          <i class="fa-brands fa-youtube" style="color:var(--brown);font-size:18px"></i>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-label">The Challenge</div>
+        <p class="case-desc">Managing the social media presence of a major UAE university with a 70K+ combined audience — producing 50+ high-quality videos, promoting 20+ annual events, and building a storytelling-led brand identity that resonated authentically with students, staff and the wider UAE community.</p>
+        <div class="case-metrics">
+          <div><div class="metric-num">70K+</div><div class="metric-label">Followers managed</div></div>
+          <div><div class="metric-num">50+</div><div class="metric-label">Videos produced</div></div>
+          <div><div class="metric-num">20+</div><div class="metric-label">Events promoted</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-sidebar">
+        <div class="case-num">03</div>
+        <div class="case-brand">Sharjah Cooperative Society</div>
+        <div class="case-period">2024 – 2025</div>
+        <div class="case-tags">
+          <span class="case-tag">Seasonal</span>
+          <span class="case-tag">Scheduling</span>
+          <span class="case-tag">Reporting</span>
+        </div>
+        <div style="margin-top:auto;display:flex;gap:10px;padding-top:20px">
+          <i class="fa-brands fa-instagram" style="color:var(--brown);font-size:18px"></i>
+          <i class="fa-brands fa-facebook" style="color:var(--brown);font-size:18px"></i>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-label">The Challenge</div>
+        <p class="case-desc">Supporting the execution of digital marketing campaigns across multiple platforms during peak seasonal periods — managing content publishing, community engagement, comment management, and performance tracking to drive measurable audience interaction and brand growth.</p>
+        <div class="case-metrics">
+          <div><div class="metric-num">+20%</div><div class="metric-label">Audience interaction</div></div>
+          <div><div class="metric-num">Multi</div><div class="metric-label">Platform campaigns</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="section-pad tools-section" id="tools">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Tech Stack</div>
+      <h2 class="section-title">Tools & Software</h2>
+    </div>
+    <div class="section-num">03</div>
+  </div>
+  <div class="tools-categories">
+    <div>
+      <div class="tool-cat-title"><i class="fa-solid fa-share-nodes"></i> &nbsp; Social Media & Marketing</div>
+      <div class="tools-row">
+        <div class="tool-pill"><i class="fa-brands fa-meta"></i><span>Meta Business Suite</span></div>
+        <div class="tool-pill"><i class="fa-brands fa-google"></i><span>Google Ads</span></div>
+        <div class="tool-pill"><i class="fa-brands fa-wordpress"></i><span>WordPress</span></div>
+        <div class="tool-pill"><i class="fa-solid fa-rss"></i><span>Buffer</span></div>
+        <div class="tool-pill"><i class="fa-solid fa-h"></i><span>HubSpot</span></div>
+        <div class="tool-pill"><i class="fa-regular fa-envelope"></i><span>Mailchimp</span></div>
+        <div class="tool-pill"><i class="fa-brands fa-tiktok"></i><span>TikTok Ads</span></div>
+        <div class="tool-pill"><i class="fa-brands fa-snapchat"></i><span>Snapchat Analytics</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="tool-cat-title"><i class="fa-solid fa-chart-bar"></i> &nbsp; Analytics & Reporting</div>
+      <div class="tools-row">
+        <div class="tool-pill"><i class="fa-brands fa-google"></i><span>Google Analytics</span></div>
+        <div class="tool-pill"><i class="fa-brands fa-meta"></i><span>Meta Insights</span></div>
+        <div class="tool-pill"><i class="fa-brands fa-microsoft"></i><span>Microsoft Excel</span></div>
+        <div class="tool-pill"><i class="fa-solid fa-file-powerpoint"></i><span>PowerPoint</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="tool-cat-title"><i class="fa-solid fa-palette"></i> &nbsp; Design & Content Creation</div>
+      <div class="tools-row">
+        <div class="tool-pill"><i class="fa-brands fa-adobe"></i><span>Adobe Photoshop</span></div>
+        <div class="tool-pill"><i class="fa-brands fa-adobe"></i><span>Adobe Illustrator</span></div>
+        <div class="tool-pill"><i class="fa-brands fa-adobe"></i><span>Adobe Premiere Pro</span></div>
+        <div class="tool-pill"><i class="fa-solid fa-pen-ruler"></i><span>Canva</span></div>
+        <div class="tool-pill"><i class="fa-brands fa-figma"></i><span>Figma</span></div>
+        <div class="tool-pill"><i class="fa-solid fa-scissors"></i><span>CapCut</span></div>
+        <div class="tool-pill"><i class="fa-solid fa-video"></i><span>VN Editor</span></div>
+        <div class="tool-pill"><i class="fa-solid fa-mobile-screen"></i><span>InShot</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3 class="skill-group-title">Strategy & Management</h3>
+      <div class="skill-group-sub"><i class="fa-solid fa-chess-knight"></i> &nbsp; Planning & Execution</div>
+      <ul class="skill-list">
+        <li>Social Media Strategy</li>
+        <li>Content Calendar Management</li>
+        <li>Campaign Management</li>
+        <li>Paid Social Media Campaigns</li>
+        <li>Brand Communication</li>
+        <li>Trend Analysis</li>
+        <li>Platform Algorithm Awareness</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3 class="skill-group-title">Content & Creation</h3>
+      <div class="skill-group-sub"><i class="fa-solid fa-wand-magic-sparkles"></i> &nbsp; Creative Production</div>
+      <ul class="skill-list">
+        <li>Short-Form Video (Reels/TikTok)</li>
+        <li>Graphic Design</li>
+        <li>Video Editing</li>
+        <li>Copywriting</li>
+        <li>Storytelling Content</li>
+        <li>Content Scheduling</li>
+        <li>Brand Awareness Campaigns</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3 class="skill-group-title">Analytics & Growth</h3>
+      <div class="skill-group-sub"><i class="fa-solid fa-chart-line"></i> &nbsp; Data & Performance</div>
+      <ul class="skill-list">
+        <li>Social Media Analytics</li>
+        <li>Performance Reporting</li>
+        <li>Audience Growth</li>
+        <li>Community Engagement</li>
+        <li>Meta Insights</li>
+        <li>Google Analytics</li>
+        <li>ROI Optimization</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section-pad" id="about" style="background:var(--bg)">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Background</div>
+      <h2 class="section-title">Education & Credentials</h2>
+    </div>
+    <div class="section-num">04</div>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="edu-degree">BA Mass Communication & Media</div>
+      <div class="edu-school">Al Qasimia University, UAE</div>
+      <div class="edu-year">2022 – 2025</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon"><i class="fa-solid fa-bullhorn"></i></div>
+      <div class="edu-degree">Diploma in Public Relations</div>
+      <div class="edu-school">Al Qasimia University, UAE</div>
+      <div class="edu-year">2024 – 2025</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon"><i class="fa-solid fa-language"></i></div>
+      <div class="edu-degree">Diploma in Media Translation</div>
+      <div class="edu-school">Al Uyoon Academy</div>
+      <div class="edu-year">2023</div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px">
+    <div class="tool-cat-title"><i class="fa-solid fa-certificate"></i> &nbsp; Certifications</div>
+    <div class="certs-grid">
+      <div class="cert-item"><i class="fa-brands fa-google"></i><span>Google Fundamentals of Digital Marketing</span></div>
+      <div class="cert-item"><i class="fa-solid fa-h"></i><span>HubSpot Digital Marketing Certification</span></div>
+      <div class="cert-item"><i class="fa-solid fa-magnifying-glass-chart"></i><span>SEMrush Marketing Certificate</span></div>
+      <div class="cert-item"><i class="fa-solid fa-robot"></i><span>AI for Everyone — Andrew Ng (Coursera)</span></div>
+      <div class="cert-item"><i class="fa-solid fa-pen-nib"></i><span>Fundamentals of Content Creation — WAM</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px">
+    <div class="tool-cat-title"><i class="fa-solid fa-globe"></i> &nbsp; Languages</div>
+    <div class="lang-grid">
+      <div class="lang-card"><div class="lang-flag">🇦🇪</div><div class="lang-name">Arabic</div><div class="lang-level">Fluent</div></div>
+      <div class="lang-card"><div class="lang-flag">🇬🇧</div><div class="lang-name">English</div><div class="lang-level">Fluent</div></div>
+      <div class="lang-card"><div class="lang-flag">🇮🇳</div><div class="lang-name">Malayalam</div><div class="lang-level">Native</div></div>
+      <div class="lang-card"><div class="lang-flag">🇮🇳</div><div class="lang-name">Hindi</div><div class="lang-level">Proficient</div></div>
+      <div class="lang-card"><div class="lang-flag">🇵🇰</div><div class="lang-name">Urdu</div><div class="lang-level">Proficient</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div>
+    <div class="contact-eyebrow">Get In Touch</div>
+    <h2 class="contact-heading">Let's create something <em>great</em> together.</h2>
+    <p class="contact-sub">Open to full-time roles, freelance projects and brand collaborations in social media management, digital marketing and content creation across the UAE.</p>
+    <div class="contact-badge"><i class="fa-solid fa-shield-halved"></i> &nbsp; UAE Golden Visa Holder &nbsp;·&nbsp; Available Immediately</div>
+  </div>
+  <div class="contact-info">
+    <div class="contact-row">
+      <i class="fa-solid fa-envelope"></i>
+      <div class="contact-col">
+        <div class="contact-label">Email</div>
+        <div class="contact-val">noorasakiyap313@gmail.com</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <i class="fa-brands fa-whatsapp"></i>
+      <div class="contact-col">
+        <div class="contact-label">Phone / WhatsApp</div>
+        <div class="contact-val">+971 507 265 819</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <i class="fa-brands fa-linkedin-in"></i>
+      <div class="contact-col">
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-val">noora-sakiya-a91339313</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <i class="fa-brands fa-instagram"></i>
+      <div class="contact-col">
+        <div class="contact-label">Instagram</div>
+        <div class="contact-val" style="color:var(--brown);font-weight:400">@des.bynoor</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <i class="fa-solid fa-location-dot"></i>
+      <div class="contact-col">
+        <div class="contact-label">Location</div>
+        <div class="contact-val">Abu Dhabi, UAE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Noora Sakiyya</div>
+  <div class="footer-text">© 2026 · Social Media & Digital Marketing Specialist · Abu Dhabi, UAE</div>
+  <div style="display:flex;gap:14px">
+    <i class="fa-brands fa-instagram" style="color:rgba(255,255,255,.3);font-size:16px"></i>
+    <i class="fa-brands fa-tiktok" style="color:rgba(255,255,255,.3);font-size:16px"></i>
+    <i class="fa-brands fa-linkedin-in" style="color:rgba(255,255,255,.3);font-size:16px"></i>
+  </div>
+</footer>
+
+</body>
+</html>
